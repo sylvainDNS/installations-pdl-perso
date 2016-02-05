@@ -1,10 +1,13 @@
 # Le composant Admin a pour rôle la création des tables de la base de données.
-
 import sqlite3
+conn = sqlite3.connect("../db/myDB.db")
+
 
 def connect():
-    conn = sqlite3.connect("../db/myDB.db")
     return conn.cursor()
+
+def commit():
+    conn.commit()
 
 def disconnect(c):
     c.close
@@ -28,20 +31,24 @@ def creerTable():
 
 def addInstallations(id, nom, adresse, code_postal, ville, latitude, longitude):
     c = connect()
-    c.execute('''INSERT INTO installations (id, nom, adresse, code_postal, ville, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?)''', (id, nom, adresse, code_postal, ville, latitude, longitude))
+    c.execute('''INSERT OR IGNORE INTO installations (id, nom, adresse, code_postal, ville, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?)''', (id, nom.encode('utf8'), adresse.encode('utf8'), code_postal, ville.encode('utf8'), latitude, longitude))
+    commit()
     disconnect(c)
 
 def addEquipements(id, nom, id_installation, type):
     c = connect()
-    c.execute('''INSERT INTO equipements (id, nom, id_installation, type) VALUES (?, ?, ?, ?)''', (id, nom, id_installation, type))
+    c.execute('''INSERT OR IGNORE INTO equipements (id, nom, id_installation, type) VALUES (?, ?, ?, ?)''', (id, nom, id_installation, type))
+    commit()
     disconnect(c)
 
 def addActivites(id, nom, id_equipement):
     c = connect()
-    c.execute('''INSERT INTO activites (id, nom, id_equipement) VALUES (?, ?, ?)''', (id, nom, id_equipement))
+    c.execute('''INSERT OR IGNORE INTO activites (id, nom, id_equipement) VALUES (?, ?, ?)''', (id, nom, id_equipement))
+    commit()
     disconnect(c)
 
 def addEquipementsActivites(id_equipement, id_activite):
     c = connect()
-    c.execute('''INSERT INTO equipements_activites (id_equipement, id_activite) VALUES (?, ?)''', (id_equipement, id_activite))
+    c.execute('''INSERT OR IGNORE INTO equipements_activites (id_equipement, id_activite) VALUES (?, ?)''', (id_equipement, id_activite))
+    commit()
     disconnect(c)

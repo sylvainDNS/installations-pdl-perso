@@ -30,10 +30,9 @@ def importInstallations():
                 adresse += ligne[7]
 
                 addInstallations(int(ligne[1]), ligne[0], adresse, ligne[4], ligne[2], float(ligne[9]), float(ligne[10]))
-
-                # print("installation_added")
     finally:
         fichier.close()
+    print("installation_added")
 
 def importEquipements():
     fname = "../csv/equipements_table.csv"
@@ -48,10 +47,10 @@ def importEquipements():
             if passe == False:
                 passe = True
             else:
-                addEquipements(int(ligne[4]), ligne[5], int(ligne[3]), ligne[7])
-                # print("equipement_added")
+                addEquipements(int(ligne[4]), ligne[5], int(ligne[2]), ligne[7])
     finally:
         fichier.close()
+    print("equipement_added")
 
 def importActivites():
     fname = "../csv/activites_table.csv"
@@ -67,9 +66,9 @@ def importActivites():
                 passe = True
             else:
                 addActivites(int(ligne[4]), ligne[5], int(ligne[2]))
-                # print("activite_added")
     finally:
         fichier.close()
+    print("activite_added")
 
 def defEquipementsActivites():
     return -1
