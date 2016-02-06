@@ -11,7 +11,7 @@ def BD():
     importEquipements()
     importActivites()
     tps2 = time.clock()
-    print(tps2-tps1)
+    print("Temps CPU : " + str(tps2-tps1))
 
 def importInstallations():
     fname = "../csv/installations_table.csv"
@@ -22,19 +22,24 @@ def importInstallations():
 
         passe = False
 
+        i = 1
+
         for ligne in lecteur:
             if passe == False:
                 passe = True
             else:
-                adresse = ""
-                if ligne[5] != "":
-                    adresse += ligne[5] + " "
-                if ligne[6] != "":
-                    adresse += ligne[6] + " "
-                adresse += ligne[7]
-                print(adresse)
+                try:
+                    adresse = ""
+                    if ligne[5] != "":
+                        adresse += ligne[5] + " "
+                    if ligne[6] != "":
+                        adresse += ligne[6] + " "
+                    adresse += ligne[7]
 
-                addInstallations(int(ligne[1]), ligne[0], adresse, ligne[4], ligne[2], float(ligne[9]), float(ligne[10]))
+                    addInstallations(int(ligne[1]), ligne[0], adresse, ligne[4], ligne[2], float(ligne[9]), float(ligne[10]))
+                except:
+                    print("Erreur dans le CSV à la ligne " + str(i))
+                i += 1
     finally:
         fichier.close()
     print("installation_added")
@@ -48,11 +53,17 @@ def importEquipements():
 
         passe = False
 
+        i = 1
+
         for ligne in lecteur:
             if passe == False:
                 passe = True
             else:
-                addEquipements(int(ligne[4]), ligne[5], int(ligne[2]), ligne[7])
+                try:
+                    addEquipements(int(ligne[4]), ligne[5], int(ligne[2]), ligne[7])
+                except:
+                    print("Erreur dans le CSV à la ligne " + str(i))
+                i += 1
     finally:
         fichier.close()
     print("equipement_added")
@@ -66,11 +77,17 @@ def importActivites():
 
         passe = False
 
+        i = 1
+
         for ligne in lecteur:
             if passe == False:
                 passe = True
             else:
-                addActivites(int(ligne[4]), ligne[5], int(ligne[2]))
+                try:
+                    addActivites(int(ligne[4]), ligne[5], int(ligne[2]))
+                except:
+                    print("Erreur dans le CSV à la ligne " + str(i))
+                i += 1
     finally:
         fichier.close()
     print("activite_added")
