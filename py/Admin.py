@@ -22,7 +22,7 @@ def creerTable():
     c.execute('''CREATE TABLE IF NOT EXISTS equipements (id INTEGER PRIMARY KEY, nom VARCHAR, id_installation INTEGER, type VARCHAR, FOREIGN KEY(id_installation) REFERENCES installation(id))''')
 
     # TABLE ACTIVITES
-    c.execute('''CREATE TABLE IF NOT EXISTS activites (id INTEGER PRIMARY KEY, nom VARCHAR, id_equipement VARCHAR, FOREIGN KEY(id_equipement) REFERENCES equipements(id))''')
+    c.execute('''CREATE TABLE IF NOT EXISTS activites (id INTEGER PRIMARY KEY, nom VARCHAR, id_equipement INTEGER, FOREIGN KEY(id_equipement) REFERENCES equipements(id))''')
 
     # TABLE EQUIPEMENTS_ACTIVITES
     c.execute('''CREATE TABLE IF NOT EXISTS equipements_activites (id_equipement INTEGER, id_activite INTEGER, FOREIGN KEY(id_equipement) REFERENCES equipements(id), FOREIGN KEY(id_activite) REFERENCES activites(id), PRIMARY KEY(id_equipement, id_activite))''')
@@ -31,7 +31,7 @@ def creerTable():
 
 def addInstallations(id, nom, adresse, code_postal, ville, latitude, longitude):
     c = connect()
-    c.execute('''INSERT OR IGNORE INTO installations (id, nom, adresse, code_postal, ville, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?)''', (id, nom.encode('utf8'), adresse.encode('utf8'), code_postal, ville.encode('utf8'), latitude, longitude))
+    c.execute('''INSERT OR IGNORE INTO installations (id, nom, adresse, code_postal, ville, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?)''', (id, nom, adresse, code_postal, ville, latitude, longitude))
     commit()
     disconnect(c)
 
