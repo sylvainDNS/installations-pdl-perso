@@ -44,9 +44,10 @@ def importInstallations():
         fichier.close()
     print("installation_added")
 
+
 def importEquipements():
     fname = "../csv/equipements_table.csv"
-    fichier = open(fname, 'r')
+    fichier = open(fname, 'r', encoding="utf-8")
 
     try:
         lecteur = csv.reader(fichier)
@@ -70,7 +71,7 @@ def importEquipements():
 
 def importActivites():
     fname = "../csv/activites_table.csv"
-    fichier = open(fname, 'r')
+    fichier = open(fname, 'r', encoding="utf-8")
 
     try:
         lecteur = csv.reader(fichier)
