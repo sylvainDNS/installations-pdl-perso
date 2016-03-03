@@ -7,8 +7,8 @@ from Admin import *
 def importer():
     tps1 = time.clock()
 
-    conn = db()
-    c = connect(conn)
+    conn = db("myDB")
+    c = cursor(conn)
     creerTable(c)
 
     # On "règle" les path

@@ -1,10 +1,11 @@
 # Le composant Admin a pour rôle la création des tables de la base de données.
 import sqlite3
 
-def db():
-    return sqlite3.connect("../db/myDB.db")
+def db(name):
+    name += '.db'
+    return sqlite3.connect("../db/" + name)
 
-def connect(conn):
+def cursor(conn):
     return conn.cursor()
 
 def push(conn):
