@@ -13,13 +13,14 @@ def index():
 @route('/activite/<query>')
 def activite(query):
     # On reforme la string
-    query.replace("%20", " ")
+    # query.replace("%20", " ")
     my_query = query_db('SELECT DISTINCT i.ville FROM installations i JOIN equipements e ON i.id = e.id_installation JOIN equipements_activites ea ON e.id = ea.id_equipement JOIN activites a ON ea.id_activite = a.id WHERE a.nom = ' + '"' + query + '"')
     return my_query
 
 @route('/commune/<query>')
 def commune(query):
-    my_query = query_db('SELECT nom FROM installations WHERE ville = ' + '"' + query + '"')
+    # Le % signifie qu'il peut y avoir quelque chose avant/après
+    my_query = query_db('SELECT nom FROM installations WHERE ville = ' + '"' + query + '" OR lieu_dit = ' + '"' + query + '"')
     return my_query
 
 # Défintion de la racine du serveur

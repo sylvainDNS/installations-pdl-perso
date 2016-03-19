@@ -2,7 +2,7 @@ import sqlite3
 
 def creerTableInstallations(my_cursor):
     # TABLE INSTALLATIONS
-    my_cursor.execute('''CREATE TABLE IF NOT EXISTS installations (id INTEGER PRIMARY KEY, nom VARCHAR, adresse VARCHAR, code_postal VARCHAR, ville VARCHAR, latitude DECIMAL, longitude DECIMAL)''')
+    my_cursor.execute('''CREATE TABLE IF NOT EXISTS installations (id INTEGER PRIMARY KEY, nom VARCHAR, adresse VARCHAR, code_postal VARCHAR, ville VARCHAR, lieu_dit VARCHAR, latitude DECIMAL, longitude DECIMAL)''')
 
 def creerTableEquipements(my_cursor):
     # TABLE EQUIPEMENTS

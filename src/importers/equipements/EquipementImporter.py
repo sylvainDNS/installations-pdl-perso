@@ -6,6 +6,6 @@ def equipementImporter(my_cursor, table):
         try:
             addEquipements(my_cursor, int(ligne[4]), ligne[5], int(ligne[2]), ligne[7])
         except:
-            print("Erreur dans equipement_table.csv à la ligne " + str(i))
+            print("Erreur dans equipement_table.csv à la ligne " + str(i) + " - ", sys.exc_info()[1])
         i += 1
         # print("equipement_added")
