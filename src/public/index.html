@@ -13,7 +13,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="css/jquery.dataTables.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <style>
     body {
@@ -80,14 +80,28 @@
             </div>
             <div class="col-sm-12 text-center">
                 <label class="radio-inline">
-                    <input type="radio" id="choixRecherche1" name="choixRecherche" checked>... une commune
+                    <input type="radio" id="choixRecherche1" name="choixRecherche" checked>... une ville
                 </label>
                 <label class="radio-inline">
                     <input type="radio" id="choixRecherche2" name="choixRecherche">... une activité
                 </label>
             </div>
+
             <div>
-                
+                <table id="table_ville" class="display" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Activité</th>
+                            <th>Adresse</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Activité</th>
+                            <th>Adresse</th>
+                        </tr>
+                    </tfoot>
+                </table>
             </div>
             <!-- /.row -->
 
@@ -96,6 +110,8 @@
 
         <!-- jQuery Version 1.11.1 -->
         <script src="js/jquery.js"></script>
+
+        <script src="js/jquery.dataTables.min.js"></script>
 
         <script src="js/search.js"></script>
 

@@ -15,7 +15,7 @@ def installationImporter(my_cursor, table):
             lieu_dit = "Non renseigné"
             if(ligne[5] != ""):
                 lieu_dit = ligne[5]
-            print(lieu_dit)
+            # print(lieu_dit)
 
             addInstallations(my_cursor, int(ligne[1]), ligne[0], adresse, ligne[4], ligne[2], lieu_dit, float(ligne[9]), float(ligne[10]))
         except:
