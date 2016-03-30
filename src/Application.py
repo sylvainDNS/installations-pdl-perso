@@ -1,3 +1,13 @@
+# -*- coding: utf-8 -*-
+
+"""
+    Module Application : le module principal
+    ========================================
+
+    Ce module est l'application utilisant bottle.py.
+    Toutes les routes sont definies dans ce module.
+"""
+
 from libs.bottle import route, template, run, static_file, error, view
 from admin.DbAdmin import db, cursor, disconnect
 from services.activities.ActivityService import queryActivite

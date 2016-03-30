@@ -14,6 +14,7 @@
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="css/dataTables.material.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <style>
     body {
@@ -87,8 +88,24 @@
                 </label>
             </div>
 
-            <div>
-                <table id="table_ville" class="display" width="100%">
+            <div id="ville" hidden="hidden">
+                <table id="table_ville" class="mdl-data-table" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Ville</th>
+                            <th>Installation</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Ville</th>
+                            <th>Installation</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div id="activite" hidden="hidden">
+                <table id="table_activite" class="mdl-data-table" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>Activité</th>
@@ -108,10 +125,11 @@
         </div>
         <!-- /.container -->
 
-        <!-- jQuery Version 1.11.1 -->
-        <script src="js/jquery.js"></script>
+        <!-- jQuery Version 1.12.2 -->
+        <script src="js/jquery-1.12.2.min.js"></script>
 
         <script src="js/jquery.dataTables.min.js"></script>
+        <script src="js/dataTables.material.min.js"></script>
 
         <script src="js/search.js"></script>
 

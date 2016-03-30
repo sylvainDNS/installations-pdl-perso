@@ -12,14 +12,23 @@ $(function() {
 
             var ajax = $.ajax({
                 url: c + '/' + r,
-                method: 'get'
+                method: 'get',
+                dataType : 'json'
             });
 
             ajax.done(function(data) {
-                console.log('réponse reçue !');
-                console.log(data);
-                // $('#table_ville').show();
-                $('#table_ville').DataTable();
+                $('#table_activite').DataTable().destroy();
+                $('#table_ville').DataTable().destroy();
+                if(c == 'activite'){
+                    $('#ville').hide();
+                }else{
+                    $('#activite').hide();
+                }
+
+                $("#" + c).show();
+                $('#table_' + c).DataTable( {
+                    data: data
+                });
             });
 
             ajax.fail(function() {
